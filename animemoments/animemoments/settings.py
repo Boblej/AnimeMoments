@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'land',
     'edits',
-    'social'
+    'social',
+    'subscription',
+    'changelog'
 ]
 
 MIDDLEWARE = [

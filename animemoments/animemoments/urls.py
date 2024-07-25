@@ -20,10 +20,14 @@ from land.views import Land
 from edits.views import Edits
 from social.views import Social
 from subscription.views import Subscription
+from changelog.views import Changelog
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Land.as_view(), name='land'),
     path('edits', Edits.as_view(), name='edits'),
     path('social', Social.as_view(), name='social'),
-    path('subscription', Subscription.as_view(), name='subscription')
+    path('subscription', Subscription.as_view(), name='subscription'),
+    path('changelog', Changelog.as_view(), name='changelog')
 ]

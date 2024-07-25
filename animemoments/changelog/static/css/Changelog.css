@@ -1,0 +1,79 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: rubik;
+    font-style: roman;
+    background-color: black !important;
+}
+
+.topper a {
+    text-decoration: none;
+    color: white;
+
+}
+
+.topper a:hover {
+    font-size: 20pt;
+    padding: 0;
+    color: rgb(255, 255, 255);
+}
+
+
+.topper {
+    font-family: rubik;
+    background-color: #000000;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.boxes {
+    width: 200px;
+    font-size: 18pt;
+}
+
+.logotype {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+.footer-sect {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: black;
+    color: rgb(68, 68, 68);
+    width: 100%;
+}
+
+.footer-left, .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-sect a {
+    text-decoration: none;
+    color: white;
+    margin: 5px 0;
+}
+
+.bug-blog {
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.bug-blog li {
+    margin-bottom: 10px;
+}
