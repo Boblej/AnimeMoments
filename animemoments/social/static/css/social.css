@@ -1,0 +1,67 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: rubik;
+    font-style: roman;
+    background-color: black !important;
+}
+
+.topper a {
+    text-decoration: none;
+    color: white;
+
+}
+
+.topper a:hover {
+    font-size: 20pt;
+    padding: 0;
+    color: rgb(255, 255, 255);
+}
+
+
+.topper {
+    font-family: rubik;
+    background-color: #000000;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.boxes {
+    width: 200px;
+    font-size: 18pt;
+}
+
+.logotype {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.Social-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+    color: white;
+}
+
+.social-container {
+    font-size: 10em;
+}
+
+.social-container a {
+    text-decoration: none;
+    color: white;
+}
+
+
+.social-container a:hover {
+    color: rgb(151, 151, 151);
+}
