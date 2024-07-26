@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'edits',
     'social',
     'subscription',
-    'changelog'
+    'changelog',
+    'user'
 ]
 
 MIDDLEWARE = [
