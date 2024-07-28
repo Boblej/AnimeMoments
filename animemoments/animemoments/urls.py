@@ -19,7 +19,7 @@ from django.urls import path, include
 from land.views import Land
 from edits.views import Edits
 from social.views import Social
-from subscription.views import Subscription
+from subscription.views import Subscription, payment_complete
 from changelog.views import Changelog
 from user.views import RegisterUser, LoginUserView, logout_user, UserPassChange, Clips
 
@@ -29,7 +29,8 @@ urlpatterns = [
     path('', Land.as_view(), name='land'),
     path('edits', Edits.as_view(), name='edits'),
     path('social', Social.as_view(), name='social'),
-    path('subscription', Subscription.as_view(), name='subscription'),
+    path('subscription', Subscription, name='subscription'),
+    path('payment_complete/', payment_complete, name='subs_payment_complete'),
     path('changelog', Changelog.as_view(), name='changelog'),
 
     path('register', RegisterUser.as_view(), name='register'),

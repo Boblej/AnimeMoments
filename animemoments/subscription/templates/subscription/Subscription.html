@@ -41,32 +41,36 @@
         </div>
     </header>
 
-    <div class="slider">
-        <div class="item">
-            <h1>Free</h1>
-            * Open Base Pack Clips <br>
-            * Open Wathing Clips <br>
-            * Open Download Base Clips <br>
-            <button class="open-button">Openned</button>
-        </div>
-        <div class="item">
-            <h1>5$/m</h1>
-            * 100% Opening of all clips
-            <button class="open-button">Open</button>
-        </div>
-        <div class="item">
-            <h1>27$/6m<div class="discount">-10%</div>
-            </h1>
-            * 100% Opening of all clips
-            <button class="open-button">Open</button>
-        </div>
-        <div class="item">
-            <h1>51$/1y<div class="discount">-15%</div>
-            </h1>
-            * 100% Opening of all clips
-            <button class="open-button">Open</button>
-        </div>
+<div class="slider">
+    <div class="item">
+        <h1>Free</h1>
+        * Open Base Pack Clips <br>
+        * Open Watching Clips <br>
+        * Open Download Base Clips <br>
+        <button class="open-button" disabled>Opened</button>
     </div>
+    <form method="post" action="{% url 'subscription' %}" class="item">
+        {% csrf_token %}
+        <h1>5$/m</h1>
+        * 100% Opening of all clips
+        <input type="hidden" name="subscription_type" value="monthly">
+        <button type="submit" class="open-button">Open</button>
+    </form>
+    <form method="post" action="{% url 'subscription' %}" class="item">
+        {% csrf_token %}
+        <h1>27$/6m<div class="discount">-10%</div></h1>
+        * 100% Opening of all clips
+        <input type="hidden" name="subscription_type" value="semi_annual">
+        <button type="submit" class="open-button">Open</button>
+    </form>
+    <form method="post" action="{% url 'subscription' %}" class="item">
+        {% csrf_token %}
+        <h1>51$/1y<div class="discount">-15%</div></h1>
+        * 100% Opening of all clips
+        <input type="hidden" name="subscription_type" value="annual">
+        <button type="submit" class="open-button">Open</button>
+    </form>
+</div>
 
     <script src="subs.js"></script>
 </body>
