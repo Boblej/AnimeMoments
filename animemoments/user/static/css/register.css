@@ -66,6 +66,11 @@ body {
     color: white;
 }
 
+.error {
+    color: red;
+    font-size: 0.9em;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="password"] {

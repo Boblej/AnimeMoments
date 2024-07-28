@@ -15,7 +15,6 @@ class RegisterUser(CreateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        response.set_cookie('registration_success', 'true', max_age=86400)
         return response
 
 class LoginUserView(LoginView):
@@ -25,14 +24,16 @@ class LoginUserView(LoginView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        if self.request.COOKIES.get('registration_success'):
-            response.delete_cookie('registration_success')
+        response.set_cookie('login_success', 'true', max_age=60*60*24*7)
+        if self.request.COOKIES.get('login_success'):
             return redirect('clips')
         return response
 
 def logout_user(request):
+    response = HttpResponseRedirect(reverse('land'))
+    response.delete_cookie('login_success')
     logout(request)
-    return HttpResponseRedirect(reverse('land'))
+    return response
 
 class UserPassChange(PasswordChangeView):
     form_class = UserChangePass
@@ -42,4 +43,7 @@ class UserPassChange(PasswordChangeView):
 
 @login_required
 def Clips(request):
-    return render(request, 'user/Clips.html', {'title': 'AnimeMoments'})
+    if request.COOKIES.get('login_success'):
+        return render(request, 'user/Clips.html', {'title': 'AnimeMoments'})
+    else:
+        return redirect('land')

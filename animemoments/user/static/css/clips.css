@@ -1,0 +1,120 @@
+:root {
+    --swiper-pagination-color: #FFFFFF; 
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: rubik;
+    font-style: roman;
+    background-color: black !important;
+}
+
+input[type="search"] {
+    flex-grow: 1;
+    border: none;
+    padding: 5px;
+    outline: none;
+}
+
+.head-container {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    align-items: center;
+}
+
+.blog {
+    grid-column: 3;
+    font-size: 20pt;
+    font-weight: 500;
+}
+
+#form {
+    grid-column: 12;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    grid-row: 1;
+    background-color: white;
+}
+
+#form i {
+    color: black;
+    background-color: white;
+    padding: 15px 10px;
+}
+
+#form button {
+    background-color: white;
+    border: none;
+}
+
+#query {
+    padding: 10px 20px;
+}
+
+#query:focus {
+    outline: none;
+}
+
+.logout {
+    grid-column: 24;
+}
+
+.logout i {
+    font-size: 24pt;
+}
+
+.header-container a, .blog-container a , .logout a {
+    color: white;
+    text-decoration: none;
+}
+
+.new-anime {
+    margin-top: 50px;
+    color: white;
+}
+
+.zogolovok {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.zogolovok2 {
+    color: white;
+    margin: 20px 5px;
+}
+
+.swiper-pagination-bullets {
+    color: white;
+}
+
+.swiper-slide img {
+    width: 450px;
+    height: 300px;
+    border-radius: 25px;
+    margin-left: 10px;
+}
+
+.anime-container {
+    gap: 2%;
+}
+
+.anime-img {
+    width: 300px;
+    height: 200px;
+    border-radius: 15px;
+    margin: 5px;
+    opacity: 0.6;
+}
+
+.anime-img:hover {
+    opacity: 1;
+    scale: 110%;
+}
