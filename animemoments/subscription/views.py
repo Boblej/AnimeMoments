@@ -15,7 +15,7 @@ def Subscription(request):
 
             subscription_type = form.cleaned_data['subscription_type']
             price = '500.00' if subscription_type == 'monthly' else (
-            '2400.00' if subscription_type == 'semi_annual' else '4300.00')
+                '2400.00' if subscription_type == 'semi_annual' else '4300.00')
             meta = {'user_id': request.user.id, 'subscription_type': subscription_type}
 
             payment = create_payment(price, 'Subscription', meta)
@@ -39,6 +39,7 @@ def payment_complete(request):
             subscription.end_date = timezone.now() + timedelta(days=182)
         elif subscription.subscription_type == 'annual':
             subscription.end_date = timezone.now() + timedelta(days=365)
+
         subscription.save()
 
     return render(request, 'subscription/payment_complete.html', {'title': 'Подписка активирована'})
