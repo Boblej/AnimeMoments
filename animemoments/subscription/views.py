@@ -26,20 +26,3 @@ def Subscription(request):
 
     return render(request, 'subscription/Subscription.html', {'form': form})
 
-
-@login_required
-def payment_complete(request):
-    subscription = get_object_or_404(Subscription, user=request.user)
-
-    if not subscription.is_active:
-        subscription.is_active = True
-        if subscription.subscription_type == 'monthly':
-            subscription.end_date = timezone.now() + timedelta(days=30)
-        elif subscription.subscription_type == 'semi_annual':
-            subscription.end_date = timezone.now() + timedelta(days=182)
-        elif subscription.subscription_type == 'annual':
-            subscription.end_date = timezone.now() + timedelta(days=365)
-
-        subscription.save()
-
-    return render(request, 'subscription/payment_complete.html', {'title': 'Подписка активирована'})

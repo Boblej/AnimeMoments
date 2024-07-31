@@ -26,7 +26,7 @@ class LoginUserView(LoginView):
         response = super().form_valid(form)
         response.set_cookie('login_success', 'true', max_age=60*60*24*7)
         if self.request.COOKIES.get('login_success'):
-            return redirect('clips')
+            return redirect('land')
         return response
 
 def logout_user(request):
@@ -40,10 +40,3 @@ class UserPassChange(PasswordChangeView):
     success_url = reverse_lazy('users:login')
     template_name = 'user/forgot_pass.html'
     extra_context = {'title': 'Forgot Password'}
-
-@login_required
-def Clips(request):
-    if request.COOKIES.get('login_success'):
-        return render(request, 'user/Clips.html', {'title': 'AnimeMoments'})
-    else:
-        return redirect('land')

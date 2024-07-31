@@ -2,3 +2,4 @@ db.sqlite3
 animemoments/settings.py
 payments/paymentconfig.py
 config
+clips/static/media

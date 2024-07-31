@@ -1,4 +1,8 @@
+import json
 import uuid
+from datetime import timedelta
+import datetime
+
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
@@ -7,10 +11,10 @@ from config.paymentconfig import SHOPID, KEY
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import PaymentStatus
+from subscription.models import Subscription
 
 Configuration.account_id = SHOPID
 Configuration.secret_key = KEY
-
 
 def create_payment(price, title, meta):
     payment_id = str(uuid.uuid4())
@@ -22,7 +26,7 @@ def create_payment(price, title, meta):
         },
         "confirmation": {
             "type": "redirect",
-            "return_url": "http://127.0.0.1:8000/payment_complete"
+            "return_url": "https://65d7-151-0-51-188.ngrok-free.app/payment_complete"
         },
         "capture": True,
         "description": title,
@@ -36,27 +40,45 @@ def create_payment(price, title, meta):
 def webhook(request):
     if request.method == 'POST':
         try:
-            payment_id = request.POST.get('object', {}).get('id')
-            payment = Payment.find_one(payment_id)
+            payload = json.loads(request.body)
+        except json.JSONDecodeError:
+            return HttpResponse(status=400)
 
-            if payment.status == 'succeeded':
-                user_id = payment.metadata.get('user_id')
-                user = get_object_or_404(User, id=user_id)
+        payment_object = payload.get('object', {})
 
-                payment_status, created = PaymentStatus.objects.get_or_create(user=user)
-                payment_status.is_payment_complete = True
-                payment_status.save()
+        if payment_object.get('status') == 'succeeded':
+            user_id = int(payment_object['metadata'].get('user_id'))
+            user = get_object_or_404(User, id=user_id)
 
-            return HttpResponse(status=200)
-        except Exception as e:
-            return HttpResponse(status=500)
+            payment_status, created = PaymentStatus.objects.get_or_create(user=user)
+            payment_status.is_payment_complete = True
+            payment_status.save()
+
+            subscription, created = Subscription.objects.get_or_create(user=user)
+            subscription_type = payment_object['metadata'].get('subscription_type')
+            subscription.is_active = True
+            subscription.subscription_type = subscription_type
+
+            if subscription.subscription_type == 'monthly':
+                subscription.end_date = datetime.datetime.now() + timedelta(days=30)
+            elif subscription.subscription_type == 'semi_annual':
+                subscription.end_date = datetime.datetime.now() + timedelta(days=182)
+            elif subscription.subscription_type == 'annual':
+                subscription.end_date = datetime.datetime.now() + timedelta(days=365)
+
+            subscription.save()
+
+        return HttpResponse(status=200)
+
     else:
         return HttpResponse(status=404)
 
-
 @login_required
 def payment_complete(request):
-    payment_status = get_object_or_404(PaymentStatus, user=request.user)
+    try:
+        payment_status = PaymentStatus.objects.get(user=request.user)
+    except PaymentStatus.DoesNotExist:
+        return redirect('land')
 
     if not payment_status.is_payment_complete:
         return redirect('land')
@@ -64,7 +86,4 @@ def payment_complete(request):
     payment_status.is_payment_complete = False
     payment_status.save()
 
-    data = {
-        'title': 'Payment Complete'
-    }
-    return render(request, 'payment/payment_complete.html', data)
+    return render(request, 'payment/payment_complete.html')
