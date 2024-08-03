@@ -15,6 +15,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path, include
 from land.views import Land
 from edits.views import Edits
@@ -22,7 +24,7 @@ from social.views import Social
 from subscription.views import Subscription
 from changelog.views import Changelog
 from user.views import RegisterUser, LoginUserView, logout_user, UserPassChange
-from clips.views import Clips
+from clips.views import Clips, anime_seasons, season_episodes
 from payments.views import webhook, payment_complete
 
 
@@ -41,4 +43,7 @@ urlpatterns = [
     path('clips', Clips, name='clips'),
     path('payment_complete', payment_complete, name='payment_complete'),
     path('webhook', webhook, name='webhook'),
+
+    path('anime/<int:series_id>/', anime_seasons, name='anime_seasons'),
+    path('season/<int:season_id>/', season_episodes, name='season_episodes'),
 ]
