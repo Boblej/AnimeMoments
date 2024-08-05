@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>{{ season.series.title }} - Season {{ season.number }} - Episodes</title>
+</head>
+<body>
+    <h1>{{ season.series.title }} - Season {{ season.number }} - Episodes</h1>
+    <ul>
+        {% for episode in episodes %}
+        <li><a href="{% url 'episode_detail' season.series.id season.id episode.id %}">Episode {{ episode.number }}: {{ episode.title }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

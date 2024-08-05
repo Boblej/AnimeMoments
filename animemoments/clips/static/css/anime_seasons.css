@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: rubik;
+    font-style: roman;
+    background-color: black !important;
+}
+
+.head-container {
+    display: flex;
+    justify-content: center;
+}
+
+.seasons {
+    display: flex;
+    color: white;
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.seasons a {
+    text-decoration: none;
+    color: white;
+    width: 200%w;
+}
+
+.season-box {
+    background-color: #131313;
+    font-size: 20pt;
+    text-align: center;
+    padding: 35pt 20pt;
+    margin: 5px;
+    border-radius: 10px;
+}

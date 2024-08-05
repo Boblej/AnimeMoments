@@ -26,7 +26,7 @@ def create_payment(price, title, meta):
         },
         "confirmation": {
             "type": "redirect",
-            "return_url": "https://f905-151-0-51-188.ngrok-free.app/payment_complete"
+            "return_url": "https://8427-151-0-51-188.ngrok-free.app/payment_complete"
         },
         "capture": True,
         "description": title,

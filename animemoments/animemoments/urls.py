@@ -45,5 +45,5 @@ urlpatterns = [
     path('webhook', webhook, name='webhook'),
 
     path('anime/<int:series_id>/', anime_seasons, name='anime_seasons'),
-    path('season/<int:season_id>/', season_episodes, name='season_episodes'),
+    path('anime/<int:series_id>/season/<int:season_id>/', season_episodes, name='season_episodes'),
 ]

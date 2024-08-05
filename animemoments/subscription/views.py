@@ -1,13 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
 from payments.views import create_payment
 from .models import Subscription
 from .forms import SubscriptionForm
 from django.utils import timezone
 from datetime import timedelta
 
-
-@login_required
 def Subscription(request):
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)

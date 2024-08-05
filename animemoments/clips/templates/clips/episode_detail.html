@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AnimeMoments</title>
+</head>
+<body>
+    {% for episode in episodes %}
+        <div>
+            <iframe width="560" height="315" src="{{ episode.get_embed_url }}" frameborder="0" allowfullscreen></iframe>
+            {% if episode.download_url %}
+                <a href="{{ episode.download_url }}" download class="download-button">Download</a>
+            {% else %}
+                <p>Download not available</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+</body>
+</html>

@@ -34,6 +34,7 @@ class Episode(models.Model):
     number = models.PositiveIntegerField(validators=[MinValueValidator(1)])
     title = models.CharField(max_length=255)
     url = models.URLField()
+    download_url = models.URLField(blank=True, null=True)
 
     class Meta:
         unique_together = ('season', 'number')
@@ -41,3 +42,11 @@ class Episode(models.Model):
 
     def __str__(self):
         return f'{self.season.series.title} - Season {self.season.number} - Episode {self.number}: {self.title}'
+
+    def get_embed_url(self):
+        if "watch?v=" in self.url:
+            return self.url.replace("watch?v=", "embed/")
+        elif "youtu.be" in self.url:
+            video_id = self.url.split('/')[-1]
+            return f"https://www.youtube.com/embed/{video_id}"
+        return self.url

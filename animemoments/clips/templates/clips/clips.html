@@ -28,10 +28,6 @@
         <div class="logout">
             <a href="{% url 'logout'%}"><i class="fa-solid fa-person-walking-arrow-loop-left"></i></a>
         </div>
-        <form role="search" id="form">
-            <input type="search" id="query" name="q" placeholder="Search..." aria-label="Search through site content">
-            <button><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
     </header>
 
     <section class="new-anime">
@@ -88,13 +84,13 @@
             <!--#################################################-->
             {% for series in anime_series %}
                 {% if series.id == 3 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
+                    {% with subscription_subscription|first as subs %}
+                        {% if subs.is_active %}
                             <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
+                                <img src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img">
                             </a>
                         {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
+                            <img src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img">
                         {% endif %}
                     {% endwith %}
                 {% endif %}
@@ -102,13 +98,13 @@
             <!--#################################################-->
             {% for series in anime_series %}
                 {% if series.id == 4 %}
-                    {% with subs=subscription_subscription|first %}
+                    {% with subscription_subscription|first as subs %}
                         {% if subs.is_active == 1 %}
                             <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
+                                <img src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img">
                             </a>
                         {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
+                            <img src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img">
                         {% endif %}
                     {% endwith %}
                 {% endif %}
@@ -116,294 +112,38 @@
             <!--#################################################-->
             {% for series in anime_series %}
                 {% if series.id == 5 %}
-                    {% with subs=subscription_subscription|first %}
+                    {% with subscription_subscription|first as subs %}
                         {% if subs.is_active == 1 %}
                             <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
+                                <img src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img">
                             </a>
                         {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
+                            <img src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img">
                         {% endif %}
                     {% endwith %}
+                {% endif %}
+                {% if forloop.counter|divisibleby:6 and not forloop.last %}
                 {% endif %}
             {% endfor %}
             <!--#################################################-->
             {% for series in anime_series %}
                 {% if series.id == 6 %}
-                    {% with subs=subscription_subscription|first %}
+                    {% with subscription_subscription|first as subs %}
                         {% if subs.is_active == 1 %}
                             <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
+                                <img src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img">
                             </a>
                         {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
+                            <img src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img">
                         {% endif %}
                     {% endwith %}
+                {% endif %}
+                {% if forloop.counter|divisibleby:6 and not forloop.last %}
                 {% endif %}
             {% endfor %}
 
         </div>
-        <div class="anime-container">
 
-            {% for series in anime_series %}
-                {% if series.id == 7 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-            <!--#################################################-->
-            {% for series in anime_series %}
-                {% if series.id == 8 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-            <!--#################################################-->
-            {% for series in anime_series %}
-                {% if series.id == 9 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-            <!--#################################################-->
-            {% for series in anime_series %}
-                {% if series.id == 10 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-            <!--#################################################-->
-            {% for series in anime_series %}
-                {% if series.id == 11 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-            <!--#################################################-->
-            {% for series in anime_series %}
-                {% if series.id == 12 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-
-        </div>
-        <div class="anime-container">
-
-            {% for series in anime_series %}
-                {% if series.id == 13 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-            <!--#################################################-->
-            {% for series in anime_series %}
-                {% if series.id == 14 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-            <!--#################################################-->
-            {% for series in anime_series %}
-                {% if series.id == 15 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-            <!--#################################################-->
-            {% for series in anime_series %}
-                {% if series.id == 16 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-            <!--#################################################-->
-            {% for series in anime_series %}
-                {% if series.id == 17 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-            <!--#################################################-->
-            {% for series in anime_series %}
-                {% if series.id == 18 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-
-        </div>
-        <div class="anime-container">
-
-            {% for series in anime_series %}
-                {% if series.id == 19 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-            <!--#################################################-->
-            {% for series in anime_series %}
-                {% if series.id == 20 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-            <!--#################################################-->
-            {% for series in anime_series %}
-                {% if series.id == 21 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-            <!--#################################################-->
-            {% for series in anime_series %}
-                {% if series.id == 22 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">w
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-            <!--#################################################-->
-            {% for series in anime_series %}
-                {% if series.id == 23 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-            <!--#################################################-->
-            {% for series in anime_series %}
-                {% if series.id == 24 %}
-                    {% with subs=subscription_subscription|first %}
-                        {% if subs.is_active == 1 %}
-                            <a href="{% url 'anime_seasons' series.id %}">
-                                <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                            </a>
-                        {% else %}
-                            <img data-src="{{ series.image_url }}" alt="{{ series.title }}" class="anime-img lazy">
-                        {% endif %}
-                    {% endwith %}
-                {% endif %}
-            {% endfor %}
-
-        </div>
 </section>
 
 
@@ -483,7 +223,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{% static 'js/slider1.js'%}"></script>
-    <script src="{% static 'js/lazy.js'%}"></script>
 </body>
 
 </html>
