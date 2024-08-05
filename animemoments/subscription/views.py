@@ -1,14 +1,13 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from payments.views import create_payment
 from .models import Subscription
 from .forms import SubscriptionForm
-from django.utils import timezone
-from datetime import timedelta
+
 
 def Subscription(request):
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and request.COOKIES.get('login_success'):
 
             subscription_type = form.cleaned_data['subscription_type']
             price = '500.00' if subscription_type == 'monthly' else (
@@ -18,6 +17,10 @@ def Subscription(request):
             payment = create_payment(price, 'Subscription', meta)
 
             return redirect(payment.confirmation.confirmation_url)
+
+        else:
+            return redirect('register')
+
     else:
         form = SubscriptionForm()
 
