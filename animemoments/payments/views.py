@@ -26,7 +26,7 @@ def create_payment(price, title, meta):
         },
         "confirmation": {
             "type": "redirect",
-            "return_url": "https://8427-151-0-51-188.ngrok-free.app/subscription"
+            "return_url": "https://59bf-190-2-133-175.ngrok-free.app/subscription"
         },
         "capture": True,
         "description": title,

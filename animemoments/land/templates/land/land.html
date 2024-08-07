@@ -37,12 +37,13 @@
             <a href="{% url 'subscription' %}">Subscription</a>
         </div>
         <div class="boxes">
-            <i class="fa-solid fa-hashtag"></i>
+            <i class="fa-solid fa-film"></i>
             <a href="{% url 'clips' %}">Clips</a>
         </div>
         <div class="boxes">
             <i class="fa-solid fa-user"></i>
-            <a href="{% url 'register' %}">Sign in</a>
+            <a id="username" style="display:none;" href="profile">{{ request.user.username }}</a>
+            <a href="{% url 'login' %}" id="signin" style="display:none;">Sign in</a>
         </div>
     </header>
 
@@ -163,6 +164,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/list.js' %}"></script>
+    <script src="{% static 'js/auth.js'%}"></script>
 
 </body>
 </html>

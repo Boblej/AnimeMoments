@@ -20,7 +20,7 @@
 
 <body>
     <header class="topper">
-        <div class="boxes">
+        <div class="boxes" style="grid-column: 4;">
             <i class="fa-solid fa-bolt"></i>
             <a href="{% url 'edits' %}">Edits</a>
         </div>
@@ -36,8 +36,13 @@
             <a href="{% url 'subscription' %}">Subscription</a>
         </div>
         <div class="boxes">
-            <i class="fa-solid fa-hashtag"></i>
-            <a href="{% url 'social' %}">Social</a>
+            <i class="fa-solid fa-film"></i>
+            <a href="{% url 'clips' %}">Clips</a>
+        </div>
+        <div class="boxes">
+            <i class="fa-solid fa-user"></i>
+            <a id="username" style="display:none;" href="profile">{{ request.user.username }}</a>
+            <a href="{% url 'register' %}" id="signin" style="display:none;">Sign in</a>
         </div>
     </header>
 
@@ -72,7 +77,7 @@
     </form>
 </div>
 
-    <script src="subs.js"></script>
-</body>
 
+    <script src="{% static 'js/auth.js'%}"></script>
+</body>
 </html>

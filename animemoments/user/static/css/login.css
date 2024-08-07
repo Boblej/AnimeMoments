@@ -141,4 +141,5 @@ input[type="submit"]:hover, .buttons:hover {
     text-align: center;
     margin-top: 10px;
     gap: 2%;
+    width: 100%;
   }

@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import AnimeSeries, Season, Episode
 from subscription.models import Subscription
 
-@login_required
 def Clips(request):
     if request.COOKIES.get('login_success'):
         anime_series = AnimeSeries.objects.all()
@@ -13,7 +12,7 @@ def Clips(request):
             'subscription_subscription': subscription_subscription
         })
     else:
-        return redirect('land')
+        return redirect('login')
 
 @login_required
 def anime_seasons(request, series_id):
@@ -41,3 +40,4 @@ def season_episodes(request, series_id, season_id):
         'episodes': episodes,
         'subscriptions': subscriptions
     })
+

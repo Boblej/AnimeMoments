@@ -4,7 +4,8 @@ from .models import Subscription
 from .forms import SubscriptionForm
 
 
-def Subscription(request):
+def Subscriptions(request):
+
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)
         if form.is_valid() and request.COOKIES.get('login_success'):
@@ -19,10 +20,9 @@ def Subscription(request):
             return redirect(payment.confirmation.confirmation_url)
 
         else:
-            return redirect('register')
+            return redirect('login')
 
     else:
         form = SubscriptionForm()
 
-    return render(request, 'subscription/Subscription.html', {'form': form})
-
+    return render(request, 'subscription/Subscription.html', {'form': form,})

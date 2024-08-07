@@ -27,13 +27,17 @@ body {
     font-family: rubik;
     background-color: #000000;
     color: white;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
     align-items: center;
     justify-content: center;
     text-align: center;
     padding-bottom: 10px;
 }
 
+.topper>div:last-child {
+    grid-column: 11;
+}
 .boxes {
     width: 200px;
     font-size: 18pt;
@@ -42,8 +46,8 @@ body {
 .logotype {
     padding-left: 20px;
     padding-right: 20px;
+    grid-column: 6;
 }
-
 
 .edit-section {
     display: grid;

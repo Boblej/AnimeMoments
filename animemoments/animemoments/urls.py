@@ -21,9 +21,9 @@ from django.urls import path, include
 from land.views import Land
 from edits.views import Edits
 from social.views import Social
-from subscription.views import Subscription
+from subscription.views import Subscriptions
 from changelog.views import Changelog
-from user.views import RegisterUser, LoginUserView, logout_user, UserPassChange
+from user.views import RegisterUser, LoginUserView, logout_user, UserPassChange, profile_view
 from clips.views import Clips, anime_seasons, season_episodes
 from payments.views import webhook, payment_complete
 
@@ -33,17 +33,22 @@ urlpatterns = [
     path('', Land.as_view(), name='land'),
     path('edits', Edits.as_view(), name='edits'),
     path('social', Social.as_view(), name='social'),
-    path('subscription', Subscription, name='subscription'),
+    path('subscription', Subscriptions, name='subscription'),
     path('changelog', Changelog.as_view(), name='changelog'),
 
     path('register', RegisterUser.as_view(), name='register'),
     path('login', LoginUserView.as_view(), name='login'),
+    path('profile', profile_view, name='profile'),
     path('logout', logout_user, name='logout'),
     path('password_change', UserPassChange.as_view(), name='forgot_pass'),
     path('clips', Clips, name='clips'),
+
     path('payment_complete', payment_complete, name='payment_complete'),
     path('webhook', webhook, name='webhook'),
 
-    path('anime/<int:series_id>/', anime_seasons, name='anime_seasons'),
-    path('anime/<int:series_id>/season/<int:season_id>/', season_episodes, name='season_episodes'),
+    path('clips/<int:series_id>/', anime_seasons, name='anime_seasons'),
+    path('clips/<int:series_id>/season/<int:season_id>/', season_episodes, name='season_episodes'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

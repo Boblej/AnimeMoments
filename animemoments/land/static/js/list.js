@@ -2,6 +2,7 @@ const q = document.querySelectorAll('.faq-box');
 const a = document.querySelectorAll('.faq-info');
 const arrow = document.querySelectorAll('.arrow');
 
+// цикл для анимации faq
 for (let i = 0; i < q.length; i++) {
     q[i].addEventListener('click', function () {
 

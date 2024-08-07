@@ -1,3 +1,4 @@
+// слайдер на главной странице
 const swiper = new Swiper('.swiper', {
     autoplay: {
         delay: 5000,

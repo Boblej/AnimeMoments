@@ -18,9 +18,8 @@
     <title>Anime Moments</title>
 </head>
 
-<body>
     <header class="topper">
-        <div class="boxes">
+        <div class="boxes" style="grid-column: 4;">
             <i class="fa-solid fa-bolt"></i>
             <a href="{% url 'edits' %}">Edits</a>
         </div>
@@ -29,15 +28,20 @@
             <a href="{% url 'changelog' %}">Changelog</a>
         </div>
         <div class="logotype">
-            <a href="{% url 'land' %}"><img src="{% static 'media/testlogo2.png' %}" alt=""><img src="testlogo2.png" alt=""></a>
+            <a href="{% url 'land' %}"><img src="{% static 'media/testlogo2.png' %}" alt=""></a>
         </div>
         <div class="boxes">
             <i class="fa-solid fa-coins"></i>
             <a href="{% url 'subscription' %}">Subscription</a>
         </div>
         <div class="boxes">
-            <i class="fa-solid fa-hashtag"></i>
-            <a href="{% url 'social' %}">Social</a>
+            <i class="fa-solid fa-film"></i>
+            <a href="{% url 'clips' %}">Clips</a>
+        </div>
+        <div class="boxes">
+            <i class="fa-solid fa-user"></i>
+            <a id="username" style="display:none;" href="profile">{{ request.user.username }}</a>
+            <a href="{% url 'register' %}" id="signin" style="display:none;">Sign in</a>
         </div>
     </header>
 
@@ -90,8 +94,8 @@
                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             <h1>Donya</h1>
         </div>
-        <div class="maybe">if you have made edits from our clips send it to us in social networks we may place it on our
-            site.</div>
+<!--        <div class="maybe">if you have made edits from our clips send it to us in social networks we may place it on our-->
+<!--            site.</div>-->
     </section>
 
 
@@ -104,5 +108,7 @@
             <a href="">Terms & Conditions</a>
         </div>
     </footer>
+
+    <script src="{% static 'js/auth.js'%}"></script>
 </body>
 </html>
